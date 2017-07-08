@@ -44,7 +44,7 @@ function deleteTask(task) {
     type: 'DELETE',
     url: '/taskmaster/' + task,
     success: refreshTasks
-  })
+  });
 }
 
 function completeTask(task) {
@@ -52,7 +52,7 @@ function completeTask(task) {
     type: 'PUT',
     url: '/taskmaster/complete/' + task,
     success: refreshTasks
-  })
+  });
 }
 
 function appendDom(tasks) {
