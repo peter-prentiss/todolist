@@ -88,16 +88,17 @@ button {
 }
 
 input[type="text"] {
-  width: 400px;
+  width: 500px;
   border: none;
   border-bottom: 3px solid white;
   background: none;
   padding-top: 10px;
   font-family: inherit;
-  font-size: 2em;
+  font-size: 2.5em;
   caret-color: white;
   color: white;
-  margin-right: 20px;
+  margin-right: 50px;
+  margin-bottom: 40px;
 }
 
 input:focus {

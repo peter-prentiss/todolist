@@ -2,9 +2,11 @@ $(document).ready(() => {
   refreshTasks();
 
   $('#submitBtn').click(function() {
-    let book = {};
-    book.task = $('#create-task').val();
-    addTask(book);
+    if($('#create-task').val()) {
+      let book = {};
+      book.task = $('#create-task').val();
+      addTask(book);
+    }
   });
 
   $('#task-table').on('click', '.delete-btn', function() {
