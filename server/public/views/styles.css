@@ -1,8 +1,107 @@
 body {
+  font-family: 'Josefin Sans', sans-serif;
   width: 100%;
+  margin: 0;
+  padding-bottom: 80px;
   text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: #55f;
+}
+
+header {
+  background-color: #003;
+
+}
+
+h1 {
+  margin: 0;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  font-family: 'Droid serif', serif;
+  font-size: 7em;
+}
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
 }
 
 table {
   margin: 0 auto;
+}
+
+table, th, td {
+  padding: 5px 20px
+}
+
+th {
+  font-size: 2em;
+}
+
+tr {
+  margin-bottom: 10px;
+}
+
+td {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  border: 2px solid white;
+  border-radius: 30px;
+  font-size: 1.5em;
+  box-shadow: 2px 2px 2px black;
+}
+
+button {
+  font-family: inherit;
+  font-size: 1.5em;
+  border: none;
+  background: none;
+  color: white;
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 3px solid white;
+  background: none;
+  padding-top: 10px;
+  font-family: inherit;
+  font-size: 2em;
+  caret-color: white;
+  color: white;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:active {
+  outline: none;
+}
+
+.completed {
+  background-color: white;
+  color: rgb(23, 227, 129)
+}
+
+.task-descr {
+  width: 500px;
+  text-align: left;
+}
+
+.complete-btn {
+  background-color: rgb(23, 227, 129);
+}
+
+.delete-btn {
+  background-color: rgb(196, 57, 161);
+  border-color: rgb(205, 17, 91);
+}
+
+#submitBtn {
+  font-size: 1.5em;
+  border: 2px solid white;
+  border-radius: 19px;
+  padding: 10px;
+  padding-top: 15px;
 }

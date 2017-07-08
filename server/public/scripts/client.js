@@ -9,6 +9,7 @@ $(document).ready(() => {
 
   $('#task-table').on('click', '.delete-btn', function() {
     let taskId = $(this).data('taskid');
+    console.log($(this));
     console.log(taskId);
     deleteTask(taskId);
   });
@@ -16,7 +17,7 @@ $(document).ready(() => {
   $('#task-table').on('click', '.complete-btn', function() {
     let completeId = $(this).data('completeid')
     completeTask(completeId);
-  })
+  });
 });
 
 function refreshTasks() {
@@ -59,14 +60,16 @@ function appendDom(tasks) {
   $('#task-table').empty();
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    if (!task.complete) {
-      let $tr = $('<tr></tr>');
-      $tr.data('task', task);
-      $tr.append(`<td>${task.task}</td>`);
-      $tr.append(`<td>${task.complete ? "Yes" : "No"}</td>`);
-      $tr.append('<td><button class="complete-btn" data-completeid="' + task.id + '">Complete</button></td>');
-      $tr.append('<td><button class="delete-btn" data-taskid="' + task.id + '">Delete</button></td>');
-      $('#task-table').append($tr);
+    let $tr = $('<tr></tr>');
+    $tr.data('task', task);
+    if(!task.complete) {
+      $tr.append(`<td class="task-descr">${task.task}</td>`);
+    } else {
+      $tr.append(`<td class="task-descr completed">${task.task} ✔</td>`);
     }
+    $tr.append('<td class="complete-btn"><button data-completeid="' + task.id + '">✔</button></td>');
+    $tr.append('<td class="delete-btn"><button data-taskid="' + task.id + '">X</button></td>');
+    $('#task-table').append($tr);
+    console.log($tr);
   }
 }
