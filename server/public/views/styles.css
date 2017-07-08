@@ -2,16 +2,32 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   width: 100%;
   margin: 0;
-  padding-bottom: 80px;
   text-align: center;
   font-size: 16px;
   color: white;
-  background-color: #55f;
+  background-color: #003;
 }
 
 header {
-  background-color: #003;
+  border-bottom: 20px solid white;
+  box-shadow: 25px 25px 5px solid black;
+}
 
+main {
+  padding-bottom: 80px;
+  background-color: #55f;
+}
+
+footer {
+  border-top: 10px solid white;
+  height: 100px;
+  background-color: rgb(46, 46, 68);
+}
+
+footer p {
+  text-align: right;
+  padding-top: 65px;
+  padding-right: 20px;
 }
 
 h1 {
@@ -24,7 +40,11 @@ h1 {
 
 h2 {
   font-size: 3em;
+  margin-top: 0;
   margin-bottom: 10px;
+  padding-top: 20px;
+  text-shadow: 1px 1px 1px black;
+
 }
 
 table {
@@ -37,6 +57,7 @@ table, th, td {
 
 th {
   font-size: 2em;
+  text-shadow: 1px 1px 1px black;
 }
 
 tr {
@@ -46,7 +67,7 @@ tr {
 td {
   margin-bottom: 10px;
   padding-top: 10px;
-  border: 2px solid white;
+  border: 4px solid white;
   border-radius: 30px;
   font-size: 1.5em;
   box-shadow: 2px 2px 2px black;
@@ -58,9 +79,16 @@ button {
   border: none;
   background: none;
   color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-box {
+  padding-top: 30px;
 }
 
 input[type="text"] {
+  width: 400px;
   border: none;
   border-bottom: 3px solid white;
   background: none;
@@ -69,14 +97,15 @@ input[type="text"] {
   font-size: 2em;
   caret-color: white;
   color: white;
+  margin-right: 20px;
 }
 
 input:focus {
   outline: none;
 }
 
-button:active {
-  outline: none;
+input::placeholder {
+  color: #eee;
 }
 
 .completed {
@@ -89,19 +118,24 @@ button:active {
   text-align: left;
 }
 
-.complete-btn {
+.complete {
+  cursor: pointer;
   background-color: rgb(23, 227, 129);
 }
 
-.delete-btn {
+.delete {
+  cursor: pointer;
   background-color: rgb(196, 57, 161);
   border-color: rgb(205, 17, 91);
+  width: 20px;
 }
 
 #submitBtn {
+  cursor: pointer;
   font-size: 1.5em;
-  border: 2px solid white;
+  border: 4px solid white;
   border-radius: 19px;
   padding: 10px;
   padding-top: 15px;
+  box-shadow: 2px 2px 2px black;
 }

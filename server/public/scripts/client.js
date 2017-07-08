@@ -11,7 +11,9 @@ $(document).ready(() => {
     let taskId = $(this).data('taskid');
     console.log($(this));
     console.log(taskId);
-    deleteTask(taskId);
+    if (confirm('Are you sure you want to remove this task?')) {
+      deleteTask(taskId);
+    }
   });
 
   $('#task-table').on('click', '.complete-btn', function() {
@@ -35,6 +37,7 @@ function addTask(taskToAdd) {
     data: taskToAdd,
     success: function(response) {
       refreshTasks();
+      $('#create-task').val('');
     }
   });
 }
@@ -44,7 +47,7 @@ function deleteTask(task) {
     type: 'DELETE',
     url: '/taskmaster/' + task,
     success: refreshTasks
-  });
+  })
 }
 
 function completeTask(task) {
@@ -58,6 +61,7 @@ function completeTask(task) {
 function appendDom(tasks) {
   console.log(tasks);
   $('#task-table').empty();
+  $('#task-table').sortable();
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
     let $tr = $('<tr></tr>');
@@ -67,8 +71,8 @@ function appendDom(tasks) {
     } else {
       $tr.append(`<td class="task-descr completed">${task.task} ✔</td>`);
     }
-    $tr.append('<td class="complete-btn"><button data-completeid="' + task.id + '">✔</button></td>');
-    $tr.append('<td class="delete-btn"><button data-taskid="' + task.id + '">X</button></td>');
+    $tr.append('<td class="complete"><button class="complete-btn" data-completeid="' + task.id + '">✔</button></td>');
+    $tr.append('<td class="delete"><button class="delete-btn" data-taskid="' + task.id + '">X</button></td>');
     $('#task-table').append($tr);
     console.log($tr);
   }

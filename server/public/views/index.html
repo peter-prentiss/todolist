@@ -2,29 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My To-Do List</title>
+    <title>Taskmaster</title>
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Josefin+Sans|Poppins" rel="stylesheet">
     <link rel="stylesheet" href="views/styles.css">
     <script type="text/javascript" src="vendors/jquery.min.js"></script>
+    <script src="vendors/jquery-ui.min.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
   </head>
   <body>
     <header>
-      <h1>Taskmaster</h1>
+      <h1>Taskmaster ✔</h1>
     </header>
-    <h2>Create New Task:</h2>
-    <input type="text" id="create-task" autofocus>
-    <button type="button" id="submitBtn">Add Task</button>
-    <table>
-      <thead>
-        <tr>
-          <th class="task-descr">Task</th>
-          <th colspan="2">Edit</th>
-        </tr>
-      </thead>
-      <tbody id="task-table">
+    <main>
+      <!-- <h2>Create New Task:</h2> -->
+      <div class="add-box">
+        <input type="text" id="create-task" placeholder="Add New Task" autofocus>
+        <button type="button" id="submitBtn">Add Task</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th class="task-descr">Task</th>
+            <th colspan="2">Edit</th>
+          </tr>
+        </thead>
+        <tbody id="task-table">
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <p>Created by Peter Prentiss ©2017</p>
+    </footer>
   </body>
 </html>

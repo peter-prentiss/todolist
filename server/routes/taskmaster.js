@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      let queryText = 'SELECT * FROM "tasks";';
+      let queryText = 'SELECT * FROM tasks ORDER BY complete, id;';
       db.query(queryText, function(errorMakingQuery, result) {
         done();
         if(errorMakingQuery) {
