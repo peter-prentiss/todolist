@@ -10,16 +10,17 @@ const config = {
   idleTimeoutMillis: 3000
 };
 
-let pool = new pg.Pool(config);
+const pool = new pg.Pool(config);
 
-router.get('/', function(req, res) {
-  pool.connect(function(errorConnectingToDatabase, db, done) {
+router.get('/', (req, res) => {
+  pool.connect((errorConnectingToDatabase, db, done) => {
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      let queryText = 'SELECT * FROM tasks ORDER BY complete, id;';
-      db.query(queryText, function(errorMakingQuery, result) {
+      // grabs task data from database and sorts by whether it is complete, priority, and then id
+      let queryText = 'SELECT * FROM tasks ORDER BY complete, priority DESC, id;';
+      db.query(queryText, (errorMakingQuery, result) => {
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
@@ -33,15 +34,17 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/', function(req, res) {
+router.post('/', (req, res) => {
   let task = req.body;
-  pool.connect(function(errorConnectingToDatabase, db, done) {
+
+  pool.connect((errorConnectingToDatabase, db, done) => {
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      let queryText = 'INSERT INTO "tasks" ("task", "complete") VALUES ($1, false);';
-      db.query(queryText, [task.task], function(errorMakingQuery, result) {
+      // adds task to database
+      let queryText = 'INSERT INTO "tasks" ("task", "complete", "priority") VALUES ($1, false, $2);';
+      db.query(queryText, [task.task, task.priority], (errorMakingQuery, result) => {
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
@@ -55,67 +58,50 @@ router.post('/', function(req, res) {
   });
 });
 
-router.put('/complete/:id', function(req, res){
-  var id = req.params.id; // Book with updated content
-  console.log(id);
+router.put('/complete/:id', (req, res) => {
+  let id = req.params.id;
 
-  // YOUR CODE HERE
-
-  pool.connect(function(errorConnectingToDatabase, db, done){
+  pool.connect((errorConnectingToDatabase, db, done) => {
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      // We connected to the database!!!
-      // Now we're going to GET things from the db
-      var queryText = 'UPDATE "tasks" SET "complete" = true WHERE id = ' + id + ';';
-      // errorMakingQuery is a bool, result is an object
-      db.query(queryText, function(errorMakingQuery, result){
+      let queryText = 'UPDATE "tasks" SET "complete" = true WHERE id = ' + id + ';';
+      db.query(queryText, (errorMakingQuery, result) => {
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
           console.log('Error making query');
           res.sendStatus(500);
         } else {
-          // console.log(result);
-          // Send back the results
           res.sendStatus(200);
         }
-      }); // end query
-    } // end if
-  }) // end pool
-
+      });
+    }
+  })
 });
 
-router.delete('/:id', function(req, res){
-  var id = req.params.id; // id of the thing to delete
-  console.log('Delete route called with id of', id);
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
 
-  // YOUR CODE HERE
-  pool.connect(function(errorConnectingToDatabase, db, done){
+  pool.connect((errorConnectingToDatabase, db, done) => {
     if(errorConnectingToDatabase) {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      // We connected to the database!!!
-      // Now we're going to GET things from the db
-      var queryText = 'DELETE FROM "tasks" WHERE id =' + id + ';';
-      console.log(queryText);
-      // errorMakingQuery is a bool, result is an object
-      db.query(queryText, function(errorMakingQuery, result){
+      let queryText = 'DELETE FROM "tasks" WHERE id =' + id + ';';
+      db.query(queryText, (errorMakingQuery, result) => {
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);
           console.log('Error making query');
           res.sendStatus(500);
         } else {
-          // console.log(result);
-          // Send back the results
           res.sendStatus(200);
         }
-      }); // end query
-    } // end if
-  }) // end pool
+      });
+    }
+  })
 
 });
 

@@ -84,6 +84,8 @@ button {
 }
 
 .add-box {
+  display: flex;
+  justify-content: center;
   padding-top: 30px;
 }
 
@@ -106,7 +108,8 @@ input:focus {
 }
 
 input::placeholder {
-  color: #eee;
+  color: white;
+  opacity: 0.4;
 }
 
 .completed {
@@ -124,18 +127,29 @@ input::placeholder {
   background-color: rgb(23, 227, 129);
 }
 
+.disabled, .disabled button {
+  cursor: default;
+  background-color: rgb(141, 199, 175);
+  color: #ccc;
+}
+
 .delete {
   cursor: pointer;
   background-color: rgb(196, 57, 161);
-  border-color: rgb(205, 17, 91);
   width: 20px;
 }
 
-#submitBtn {
+.priority {
+  border-color: red;
+}
+
+#add-btn {
+  display: block;
   cursor: pointer;
   font-size: 1.5em;
   border: 4px solid white;
   border-radius: 19px;
+  margin-bottom: 10px;
   padding: 10px;
   padding-top: 15px;
   box-shadow: 2px 2px 2px black;

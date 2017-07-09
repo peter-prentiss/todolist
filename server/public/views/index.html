@@ -17,13 +17,16 @@
       <!-- <h2>Create New Task:</h2> -->
       <div class="add-box">
         <input type="text" id="create-task" placeholder="Add New Task" autofocus>
-        <button type="button" id="submitBtn">Add Task</button>
+        <div>
+          <button type="button" id="add-btn">Add Task</button>
+          <input type="checkbox" name="taskcheck" id="priority" value="priority">
+          <label for="priority">High Priority</label>
+        </div>
       </div>
       <table>
         <thead>
           <tr>
             <th class="task-descr">Task</th>
-            <th colspan="2">Edit</th>
           </tr>
         </thead>
         <tbody id="task-table">
