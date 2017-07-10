@@ -83,8 +83,6 @@ function completeTask(task) {
 function appendDom(tasks) {
   // empties table's current contents
   $('#task-table').empty();
-  // makes table sortable (doesn't currently save re-sorting, may eliminate)
-  $('#task-table').sortable();
   // loops through tasks array
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
