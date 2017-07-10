@@ -66,8 +66,8 @@ router.put('/complete/:id', (req, res) => {
       console.log('Error connecting to the database.');
       res.sendStatus(500);
     } else {
-      let queryText = 'UPDATE "tasks" SET "complete" = true WHERE id = ' + id + ';';
-      db.query(queryText, (errorMakingQuery, result) => {
+      let queryText = 'UPDATE "tasks" SET "complete" = true WHERE id = $1;';
+      db.query(queryText, [id], (errorMakingQuery, result) => {
         done();
         if(errorMakingQuery) {
           console.log('Attempted to query with', queryText);

@@ -42,12 +42,8 @@ function addTask() {
   if($('#create-task').val()) {
     let task = {};
     task.task = $('#create-task').val();
-    // checks if high priority checkbox is true and assigns that information
-    if($('#priority')[0].checked) {
-      task.priority = true;
-    } else {
-      task.priority = false;
-    }
+    // assigns boolean to task.priority
+    task.priority = ('#priority')[0].checked;
     // sends data to server
     $.ajax({
       type: 'POST',
